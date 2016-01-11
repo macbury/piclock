@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require_relative '../lib/clock'
+
+clock = Clock.new
+
+begin
+  clock.run
+ensure
+  clock.close
+end
