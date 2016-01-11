@@ -5,7 +5,8 @@ require 'artii'
 class Clock
   # Starts clock screen
   def initialize
-    @font = Artii::Base.new(font: 'dotmatrix') # banner3
+    @font             = Artii::Base.new(font: 'banner3') # banner3
+    @background_color = Ncurses::COLOR_BLACK
   end
 
   # Starts render loop for clock ui
@@ -36,13 +37,14 @@ class Clock
 
     if Ncurses::has_colors?
       Ncurses::start_color
+      Ncurses::use_default_colors
     end
   end
 
   # Returns formatted time
   # @return [String]
   def formatted_current_time
-    Time.now.strftime('%H:%M')
+    Time.now.strftime('%H : %M')
   end
 
   # This renders all ui
